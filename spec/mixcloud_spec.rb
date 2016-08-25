@@ -7,9 +7,10 @@ describe Mixcloud do
   end
 
   it 'uploads an mp3' do
-    response = {"result"=>{"message"=>"Uploaded test", "key"=>"/datafruits/test/", "success"=>true}}
+    expected_response = {"result"=>{"message"=>"Uploaded test", "key"=>"/freedrool/test/", "success"=>true}}
     VCR.use_cassette "mp3_upload" do
-      expect(Mixcloud::Client.new(token).upload("spec/support/test.mp3", "test")).to eq response
+      actual_response = Mixcloud::Client.new(token).upload("spec/support/test.mp3", "test", "spec/support/artwork2.png")
+      expect(actual_response).to eq expected_response
     end
   end
 end
