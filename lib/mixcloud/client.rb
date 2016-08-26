@@ -10,12 +10,15 @@ module Mixcloud
       @token = token
     end
 
-    def upload file, name, picture
-      result = self.class.post "#{authorized_url("upload")}", :query => {
+    def upload file, name, picture=nil
+      params = {
         :mp3 => File.new(file),
         :name => name,
-        :picture => File.new(picture)
       }
+      if picture
+        params[:picture] = File.new(picture)
+      end
+      result = self.class.post "#{authorized_url("upload")}", :query => params
       JSON.parse(result.parsed_response)
     end
 

@@ -8,8 +8,16 @@ describe Mixcloud do
 
   it 'uploads an mp3' do
     expected_response = {"result"=>{"message"=>"Uploaded test", "key"=>"/freedrool/test/", "success"=>true}}
-    VCR.use_cassette "mp3_upload" do
+    VCR.use_cassette(RSpec.current_example.metadata[:full_description].to_s) do
       actual_response = Mixcloud::Client.new(token).upload("spec/support/test.mp3", "test", "spec/support/artwork2.png")
+      expect(actual_response).to eq expected_response
+    end
+  end
+
+  it 'artwork is optional' do
+    expected_response = {"result"=>{"message"=>"Uploaded test", "key"=>"/freedrool/test-1/", "success"=>true}}
+    VCR.use_cassette(RSpec.current_example.metadata[:full_description].to_s) do
+      actual_response = Mixcloud::Client.new(token).upload("spec/support/test.mp3", "test")
       expect(actual_response).to eq expected_response
     end
   end
