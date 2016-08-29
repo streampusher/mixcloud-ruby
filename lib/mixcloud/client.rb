@@ -3,6 +3,7 @@ require 'httmultiparty'
 module Mixcloud
   class Client
     include HTTMultiParty
+    default_timeout 600
     API_URL = "https://api.mixcloud.com"
     headers({"Accept" => "application/json"})
 
