@@ -11,11 +11,14 @@ module Mixcloud
       @token = token
     end
 
-    def upload file, name, picture=nil
+    def upload file, name, picture=nil, tags=[]
       params = {
         :mp3 => File.new(file),
-        :name => name,
+        :name => name
       }
+      tags.each_with_index do |tag, index|
+        params["tags-#{index}-tag"] = tag
+      end
       if picture
         params[:picture] = File.new(picture)
       end

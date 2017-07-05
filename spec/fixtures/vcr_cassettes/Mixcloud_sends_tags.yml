@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.mixcloud.com/upload/?access_token=<MIXCLOUD_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost
+      Content-Length:
+      - '116480716'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.0
+      Date:
+      - Wed, 05 Jul 2017 02:30:35 GMT
+      Content-Type:
+      - text/javascript; charset=utf-8
+      Content-Length:
+      - '122'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      - Origin
+      X-Request-Id:
+      - 1aa31f430d918a61fc7412264b2fc93c
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: "{\n    \"result\": {\n        \"message\": \"Uploaded test\", \n        \"key\":
+        \"/freedrool/test/\", \n        \"success\": true\n    }\n}"
+    http_version: 
+  recorded_at: Wed, 05 Jul 2017 02:30:35 GMT
+recorded_with: VCR 3.0.3
